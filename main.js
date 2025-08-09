@@ -3,7 +3,7 @@
 // Pastikan config.js dimuat sebelum file ini
 document.addEventListener('DOMContentLoaded', async () => {
     // === 1. KEAMANAN & PENGAMBILAN DATA AWAL ===
-    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+    const { data: { session }, error: sessionError } = await supaClient.auth.getSession();
 
     if (sessionError || !session) {
         // Jika tidak ada sesi (belum login), tendang ke halaman login
