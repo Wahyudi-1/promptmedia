@@ -15,7 +15,7 @@ if (registerForm) {
         const password = document.getElementById('register-password').value;
 
         // Mendaftar pengguna baru ke Supabase Auth
-        const { data, error } = await supabase.auth.signUp({
+        const { data, error } = await supaClient.auth.signUp({
             email: email,
             password: password,
             options: {
