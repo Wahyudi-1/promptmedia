@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    const { data: profile, error } = await supabase
+    const { data: profile, error } = await supaClient
         .from('profiles')
         .select('role')
         .eq('id', session.user.id)
