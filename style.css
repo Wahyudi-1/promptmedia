@@ -1,0 +1,223 @@
+/* --- FONT & VARIABEL GLOBAL --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #4A90E2; /* Biru yang modern */
+    --secondary-color: #4A4A4A; /* Abu-abu tua untuk teks */
+    --accent-color: #50E3C2; /* Hijau tosca untuk aksen dan sukses */
+    --danger-color: #D0021B; /* Merah untuk bahaya dan logout */
+    --light-bg: #f4f7f9; /* Latar belakang halaman yang sangat terang */
+    --card-bg: #ffffff;
+    --dark-code-bg: #2d3748; /* Latar belakang area kode */
+    --light-text: #edf2f7; /* Teks terang untuk latar gelap */
+    --border-radius: 8px;
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--secondary-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- GAYA KOMPONEN UTAMA (TIMPA BOOTSTRAP) --- */
+
+.btn {
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    padding: 10px 24px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    border: none;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+}
+.btn-primary:hover {
+    background-color: #357ABD; /* Sedikit lebih gelap saat hover */
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+}
+.btn-danger:hover {
+    background-color: #A90115;
+}
+
+.btn-success {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+}
+.btn-success:hover {
+    background-color: #34CBA7;
+}
+
+.form-control, .form-select {
+    border-radius: var(--border-radius);
+    padding: 10px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.25);
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    background-color: var(--card-bg);
+}
+
+/* --- HALAMAN LOGIN & REGISTER --- */
+.auth-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.auth-card a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.auth-card a:hover {
+    color: #357ABD;
+}
+
+
+/* --- HALAMAN GENERATOR UTAMA (index.html) --- */
+
+.navbar {
+    box-shadow: var(--shadow-sm);
+}
+
+#user-info {
+    color: var(--light-text);
+    opacity: 0.8;
+}
+
+#dynamic-form-container .card {
+    background-color: #f8f9fa;
+    box-shadow: none;
+    border: 1px solid #e9ecef;
+    margin-bottom: 1rem;
+}
+
+#dynamic-form-container .card-header {
+    font-weight: 600;
+}
+
+/* Area Hasil Prompt yang Interaktif */
+.output-area {
+    background-color: var(--dark-code-bg);
+    color: var(--light-text);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    white-space: pre-wrap;
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    position: relative;
+    transition: all 0.3s ease;
+    min-height: 200px;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--light-text);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0.7;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.copy-btn:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Efek placeholder loading yang menarik */
+#hasil-prompt:empty::before {
+    content: 'Menunggu hasil prompt...';
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+}
+
+
+/* --- HALAMAN ADMIN --- */
+
+.navbar-admin {
+    background-color: var(--danger-color) !important;
+}
+
+#user-list tr:hover {
+    background-color: rgba(74, 144, 226, 0.05); /* Warna biru sangat transparan */
+    cursor: pointer;
+}
+
+#user-list .form-select-sm {
+    min-width: 150px;
+}
+
+
+/* --- ANIMASI & EFEK TAMBAHAN --- */
+
+/* Animasi untuk memunculkan elemen */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animasi untuk memunculkan section secara berurutan */
+#step-1, #step-2, #step-3, #output-section, .card {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0; /* Mulai dari transparan */
+}
+
+/* Memberi sedikit delay agar terlihat berurutan */
+#step-2 { animation-delay: 0.1s; }
+#step-3 { animation-delay: 0.2s; }
+#output-section { animation-delay: 0.3s; }
+
+
+/* Animasi loading spinner sederhana */
+.spinner {
+    width: 2rem;
+    height: 2rem;
+    border: 4px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border .75s linear infinite;
+    margin: 1rem auto;
+}
+
+@keyframes spinner-border {
+    to { transform: rotate(360deg); }
+}
