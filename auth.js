@@ -1,4 +1,4 @@
-// File: auth.js
+// File: auth.js 
 
 // Pastikan config.js sudah dimuat sebelum file ini
 const registerForm = document.getElementById('register-form');
