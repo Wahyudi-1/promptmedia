@@ -60,7 +60,7 @@ if (loginForm) {
 
 // --- FUNGSI LOGOUT ---
 const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
+    const { error } = await supaClient.auth.signOut();
     if (error) {
         alert('Error Logout: ' + error.message);
     } else {
