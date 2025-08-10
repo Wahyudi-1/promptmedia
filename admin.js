@@ -3,7 +3,7 @@
 // Pastikan config.js dimuat sebelum file ini
 document.addEventListener('DOMContentLoaded', async () => {
     // === 1. KEAMANAN HALAMAN ADMIN (SANGAT PENTING) ===
-    const { data: { session } } = await supabase.auth.getSession();
+    const { data: { session } } = await supaClient.auth.getSession();
     if (!session) {
         window.location.href = '/login.html';
         return;
@@ -52,7 +52,7 @@ async function loadUsers() {
         $$ language plpgsql security definer;
     */
     
-    const { data: users, error } = await supabase.rpc('get_all_users');
+    const { data: users, error } = await supaClient.rpc('get_all_users');
 
     if (error) {
         userListBody.innerHTML = '<tr><td colspan="3" class="text-center text-danger">Gagal memuat data.</td></tr>';
@@ -85,7 +85,7 @@ document.getElementById('user-list').addEventListener('change', async (e) => {
         const newRole = e.target.value;
 
         if (confirm(`Anda yakin ingin mengubah peran pengguna ini menjadi "${newRole}"?`)) {
-            const { error } = await supabase
+            const { error } = await supaClient
                 .from('profiles')
                 .update({ role: newRole })
                 .eq('id', userId);
