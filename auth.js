@@ -44,7 +44,7 @@ if (loginForm) {
         const email = document.getElementById('login-email').value;
         const password = document.getElementById('login-password').value;
 
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supaClient.auth.signInWithPassword({
             email: email,
             password: password,
         });
