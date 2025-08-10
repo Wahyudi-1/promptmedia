@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Ambil profil pengguna untuk mendapatkan peran (role)
-    const { data: profile, error: profileError } = await supabase
+    const { data: profile, error: profileError } = await supaClient
         .from('profiles')
         .select('role, username')
         .eq('id', session.user.id)
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const templateSelect = document.getElementById('template-select');
     let allTemplates = []; // Simpan data template untuk diakses nanti
 
-    const { data: templates, error: templatesError } = await supabase.from('templates').select('*');
+    const { data: templates, error: templatesError } = await supaClient.from('templates').select('*');
     if (templatesError) {
         alert('Gagal memuat template.');
     } else {
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         outputSection.style.display = 'block';
         
         // Panggil Edge Function
-        const { data, error } = await supabase.functions.invoke('generate-prompt', {
+        const { data, error } = await supaClient.functions.invoke('generate-prompt', {
             body: formData,
         });
 
